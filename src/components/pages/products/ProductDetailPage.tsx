@@ -136,7 +136,7 @@ Thank you!`;
   if (!product) {
     return (
       <PageLayout showHeader={false}>
-        <PageHeader title="Product Not Found" showBackButton onBack={() => navigate(-1)} />
+        <PageHeader title="Product Not Found" showBackButton showBreadcrumb={false} onBack={() => navigate(-1)} />
         <div className="text-center py-12">
           <p className="text-lg text-muted-foreground">The product you're looking for doesn't exist.</p>
           <Button onClick={() => navigate(-1)} className="mt-4">Go Back</Button>
@@ -161,6 +161,7 @@ Thank you!`;
       <PageHeader
         title="Product Details"
         showBackButton
+        showBreadcrumb={false}
         onBack={() => navigate(-1)}
         actions={
           <div className="flex gap-2">

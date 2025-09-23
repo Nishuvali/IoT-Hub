@@ -449,12 +449,15 @@ export const EnhancedAuthModal: React.FC<EnhancedAuthModalProps> = ({ isOpen, on
 
       <div className="text-center">
         <Button
-          variant="link"
-          className="text-sm"
+          variant="outline"
+          className="w-full text-sm font-medium"
           onClick={() => setCurrentStep('signup')}
         >
-          Don't have an account? Sign up
+          Create New Account
         </Button>
+        <p className="text-xs text-muted-foreground mt-2">
+          Don't have an account? Click above to sign up
+        </p>
       </div>
     </div>
   );

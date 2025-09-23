@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Search, X, Clock, TrendingUp, Zap } from 'lucide-react';
 import { Input } from '../../ui/forms/input';
 import { Button } from '../../ui/forms/button';
@@ -32,7 +32,9 @@ export const SmartSearch: React.FC<SmartSearchProps> = ({
   const [trendingSearches, setTrendingSearches] = useState<SearchSuggestion[]>([]);
   const [loading, setLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleViewDetails = (productId: string) => {
     navigate(`/product/${productId}`);
@@ -56,6 +58,28 @@ export const SmartSearch: React.FC<SmartSearchProps> = ({
       { id: '5', text: 'Sensors', type: 'trending', count: 90 },
     ]);
   }, []);
+
+  // Close dropdown when route changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
+  // Handle click outside to close dropdown
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   // Debounced search function
   useEffect(() => {
@@ -258,7 +282,7 @@ export const SmartSearch: React.FC<SmartSearchProps> = ({
   };
 
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative ${className}`} ref={dropdownRef}>
       <div className="relative">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
         <Input

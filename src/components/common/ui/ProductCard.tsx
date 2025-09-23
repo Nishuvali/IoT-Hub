@@ -48,7 +48,7 @@ I would like to discuss customization options and requirements. Please let me kn
 
 Thank you!`;
 
-    const whatsappNumber = import.meta.env.VITE_WHATSAPP_PHONE_NUMBER || '919876543210';
+    const whatsappNumber = (import.meta as any).env?.VITE_WHATSAPP_PHONE_NUMBER || '919876543210';
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
@@ -117,8 +117,8 @@ Thank you!`;
     );
   }
 
-  return (
-    <Card className={`hover:shadow-lg transition-shadow ${className}`}>
+        return (
+          <Card className={`hover:shadow-lg hover:shadow-primary transition-all duration-300 hover:-translate-y-1 ${className}`}>
       <CardHeader className="pb-2">
         <div className="relative cursor-pointer" onClick={handleViewDetails}>
           <img
@@ -126,9 +126,9 @@ Thank you!`;
             alt={product.name}
             className="w-full h-48 object-cover rounded-lg hover:opacity-90 transition-opacity"
           />
-          <Badge className="absolute top-2 left-2" variant="secondary">
-            {product.category}
-          </Badge>
+                <Badge className="absolute top-2 left-2 bg-secondary text-secondary-foreground" variant="secondary">
+                  {product.category}
+                </Badge>
         </div>
         <CardTitle className="text-lg line-clamp-2 cursor-pointer hover:text-primary transition-colors" onClick={handleViewDetails}>
           {product.name}
@@ -144,16 +144,16 @@ Thank you!`;
         <p className="text-sm text-muted-foreground line-clamp-2">
           {product.description}
         </p>
-        <div className="text-2xl font-bold mt-2">₹{product.price.toFixed(2)}</div>
+        <div className="text-2xl font-bold mt-2 text-primary">₹{product.price.toFixed(2)}</div>
       </CardContent>
       <CardFooter className="flex flex-col gap-2">
         {product.product_type === 'digital_project' ? (
-          <Button onClick={handleWhatsAppInquiry} className="w-full bg-green-600 hover:bg-green-700 text-sm">
+          <Button onClick={handleWhatsAppInquiry} className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground text-sm transition-all duration-200">
             <MessageCircle className="h-3 w-3 mr-1" />
             WhatsApp
           </Button>
         ) : (
-          <Button onClick={handleAddToCart} className="w-full">
+          <Button onClick={handleAddToCart} className="w-full bg-black hover:bg-gray-800 text-white transition-all duration-200">
             <ShoppingCart className="h-4 w-4 mr-2" />
             Add to Cart
           </Button>

@@ -62,7 +62,7 @@ export const CartPage: React.FC<CartPageProps> = () => {
   if ((state.items || []).length === 0) {
     return (
       <PageLayout showHeader={false}>
-        <PageHeader title="Shopping Cart" showBackButton onBack={() => navigate(-1)} />
+        <PageHeader title="Shopping Cart" showBackButton showBreadcrumb={false} onBack={() => navigate(-1)} />
         <EmptyState
           icon={<ShoppingBag className="h-12 w-12" />}
           title="Your cart is empty"
@@ -75,7 +75,7 @@ export const CartPage: React.FC<CartPageProps> = () => {
 
   return (
     <PageLayout showHeader={false}>
-      <PageHeader title="Shopping Cart" showBackButton onBack={() => navigate(-1)} />
+      <PageHeader title="Shopping Cart" showBackButton showBreadcrumb={false} onBack={() => navigate(-1)} />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

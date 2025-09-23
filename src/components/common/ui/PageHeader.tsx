@@ -4,6 +4,7 @@ import { ArrowLeft, Menu, Search, ShoppingCart, User, Heart } from 'lucide-react
 import { useAuth } from '../../../contexts/AuthContext';
 import { useCart } from '../../../contexts/CartContext';
 import { useWishlist } from '../../../contexts/WishlistContext';
+import { Breadcrumb } from '../navigation/Breadcrumb';
 
 interface PageHeaderProps {
   title: string;
@@ -11,6 +12,8 @@ interface PageHeaderProps {
   onBack?: () => void;
   actions?: React.ReactNode;
   showNavigation?: boolean;
+  showBreadcrumb?: boolean;
+  breadcrumbItems?: Array<{ label: string; href?: string; current?: boolean }>;
   className?: string;
 }
 
@@ -20,6 +23,8 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   onBack,
   actions,
   showNavigation = false,
+  showBreadcrumb = true,
+  breadcrumbItems,
   className = ''
 }) => {
   const { state } = useAuth();
@@ -32,6 +37,11 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   return (
     <div className={`bg-white border-b ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {showBreadcrumb && (
+          <div className="py-3 border-b border-gray-100">
+            <Breadcrumb items={breadcrumbItems} />
+          </div>
+        )}
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             {showBackButton && (

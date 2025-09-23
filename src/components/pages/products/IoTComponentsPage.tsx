@@ -4,6 +4,7 @@ import { PageLayout } from '../../layouts/PageLayout';
 import { PageHeader } from '../../common/ui/PageHeader';
 import { ProductGrid } from '../../ecommerce/ProductGrid';
 import { ProductFilters } from '../../ecommerce/ProductGrid';
+import { ProductGridSkeleton } from '../../common/ui/SkeletonLoader';
 import { Container } from '../../layouts/PageLayout';
 import { Button } from '../../ui/forms/button';
 import { Grid, List, Filter } from 'lucide-react';
@@ -215,6 +216,7 @@ export const IoTComponentsPage: React.FC<IoTComponentsPageProps> = () => {
       <PageHeader
         title="IoT Components"
         showBackButton={true}
+        showBreadcrumb={false}
         onBack={() => navigate(-1)}
         actions={
           <div className="flex items-center gap-2">
@@ -260,16 +262,20 @@ export const IoTComponentsPage: React.FC<IoTComponentsPageProps> = () => {
 
           {/* Products Grid */}
           <div className="lg:col-span-3">
-            <ProductGrid
-              products={products}
-              isLoading={isLoading}
-              viewMode={viewMode}
-              onAddToCart={handleAddToCart}
-              onAddToWishlist={handleAddToWishlist}
-              onViewDetails={handleProductViewDetails}
-              emptyStateTitle="No IoT components found"
-              emptyStateDescription="Try adjusting your search or filter criteria to find what you're looking for."
-            />
+            {isLoading ? (
+              <ProductGridSkeleton count={8} />
+            ) : (
+              <ProductGrid
+                products={products}
+                isLoading={isLoading}
+                viewMode={viewMode}
+                onAddToCart={handleAddToCart}
+                onAddToWishlist={handleAddToWishlist}
+                onViewDetails={handleProductViewDetails}
+                emptyStateTitle="No IoT components found"
+                emptyStateDescription="Try adjusting your search or filter criteria to find what you're looking for."
+              />
+            )}
           </div>
         </div>
       </Container>

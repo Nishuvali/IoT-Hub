@@ -1,0 +1,89 @@
+/* IoT Hub Color Scheme - CSS Custom Properties */
+
+:root {
+  /* Primary Colors */
+  --primary-blue: #2563eb;
+  --primary-blue-dark: #1d4ed8;
+  --primary-blue-light: #60a5fa;
+  
+  /* Secondary Colors */
+  --secondary-green: #059669;
+  --secondary-green-dark: #047857;
+  --secondary-green-light: #34d399;
+  
+  /* Neutral Colors */
+  --background: #ffffff;
+  --surface: #f8fafc;
+  --border: #e2e8f0;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  
+  /* Status Colors */
+  --success: #059669;
+  --warning: #d97706;
+  --error: #dc2626;
+  --info: #2563eb;
+  
+  /* Interactive Colors */
+  --hover-bg: #f1f5f9;
+  --active-bg: #dbeafe;
+  --focus-ring: #2563eb;
+  
+  /* Shadow Colors */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-primary: 0 4px 14px 0 rgba(37, 99, 235, 0.1);
+  
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+}
+
+/* Dark mode support (for future implementation) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0F172A;
+    --surface: #1E293B;
+    --border: #334155;
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #64748B;
+    --hover-bg: #334155;
+    --active-bg: #1E40AF;
+  }
+}
+
+/* Utility classes for quick color application */
+.bg-primary { background-color: var(--primary-blue); }
+.bg-primary-dark { background-color: var(--primary-blue-dark); }
+.bg-primary-light { background-color: var(--primary-blue-light); }
+.bg-secondary { background-color: var(--secondary-green); }
+.bg-surface { background-color: var(--surface); }
+.bg-background { background-color: var(--background); }
+
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+.text-brand { color: var(--primary-blue); }
+.text-success { color: var(--success); }
+.text-error { color: var(--error); }
+
+.border-primary { border-color: var(--primary-blue); }
+.border-secondary { border-color: var(--border); }
+
+.shadow-primary { box-shadow: var(--shadow-primary); }
+.shadow-hover { transition: box-shadow 0.2s ease; }
+.shadow-hover:hover { box-shadow: var(--shadow-lg); }

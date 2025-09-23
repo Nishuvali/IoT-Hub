@@ -104,42 +104,47 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm">
         <div className="container mx-auto flex h-16 items-center justify-between px-6">
           {/* Logo */}
           <div className="flex items-center cursor-pointer" onClick={handleHomeClick}>
-            <h1 className="text-xl font-semibold">IoT Hub</h1>
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">I</span>
+              </div>
+              <h1 className="text-xl font-semibold text-black">IoT Hub</h1>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link 
               to="/" 
-              className={`hover:text-primary transition-colors px-3 py-2 rounded-lg ${location.pathname === '/' ? 'text-primary font-bold bg-primary/10 border border-primary/20' : ''}`}
+              className={`hover:text-white hover:bg-gray-800 transition-all duration-200 px-3 py-2 rounded-lg ${location.pathname === '/' ? 'text-white font-bold bg-black border border-gray-800 shadow-sm' : 'text-gray-600'}`}
             >
               Home
             </Link>
             <Link 
               to="/iot-components" 
-              className={`hover:text-primary transition-colors px-3 py-2 rounded-lg ${location.pathname === '/iot-components' ? 'text-primary font-bold bg-primary/10 border border-primary/20' : ''}`}
+              className={`hover:text-white hover:bg-gray-800 transition-all duration-200 px-3 py-2 rounded-lg ${location.pathname === '/iot-components' ? 'text-white font-bold bg-black border border-gray-800 shadow-sm' : 'text-gray-600'}`}
             >
               IoT Components
             </Link>
             <Link 
               to="/ready-made-projects" 
-              className={`hover:text-primary transition-colors px-3 py-2 rounded-lg ${location.pathname === '/ready-made-projects' ? 'text-primary font-bold bg-primary/10 border border-primary/20' : ''}`}
+              className={`hover:text-white hover:bg-gray-800 transition-all duration-200 px-3 py-2 rounded-lg ${location.pathname === '/ready-made-projects' ? 'text-white font-bold bg-black border border-gray-800 shadow-sm' : 'text-gray-600'}`}
             >
               Ready-Made Projects
             </Link>
             <Link 
               to="/contact" 
-              className={`hover:text-primary transition-colors px-3 py-2 rounded-lg ${location.pathname === '/contact' ? 'text-primary font-bold bg-primary/10 border border-primary/20' : ''}`}
+              className={`hover:text-white hover:bg-gray-800 transition-all duration-200 px-3 py-2 rounded-lg ${location.pathname === '/contact' ? 'text-white font-bold bg-black border border-gray-800 shadow-sm' : 'text-gray-600'}`}
             >
               Contact
             </Link>
             <Link 
               to="/connection-test" 
-              className={`hover:text-primary transition-colors px-3 py-2 rounded-lg ${location.pathname === '/connection-test' ? 'text-primary font-bold bg-primary/10 border border-primary/20' : ''}`}
+              className={`hover:text-white hover:bg-gray-800 transition-all duration-200 px-3 py-2 rounded-lg ${location.pathname === '/connection-test' ? 'text-white font-bold bg-black border border-gray-800 shadow-sm' : 'text-gray-600'}`}
             >
               Test Connections
             </Link>
@@ -244,23 +249,23 @@ export const Header: React.FC = () => {
               )}
             </Button>
 
-            {/* Mobile Menu Button */}
-            <div className="md:hidden">
-              <Button
-                variant="outline"
-                size="icon"
-                className="h-9 w-9"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-              >
-                {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-              </Button>
-            </div>
+                {/* Mobile Menu Button */}
+                <div className="md:hidden">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="h-9 w-9"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  >
+                    {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+                  </Button>
+                </div>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden border-t bg-background">
+          <div className="md:hidden border-t border-border bg-background shadow-lg">
             <nav className="container mx-auto py-4 px-6">
               <div className="flex flex-col space-y-4">
                 {/* Mobile Smart Search */}
@@ -273,35 +278,35 @@ export const Header: React.FC = () => {
                 <div className="flex flex-col space-y-2">
                   <Link 
                     to="/" 
-                    className={`py-2 hover:text-primary transition-colors px-3 py-2 rounded-lg ${location.pathname === '/' ? 'text-primary font-bold bg-primary/10 border border-primary/20' : ''}`}
+                    className={`py-2 hover:text-white hover:bg-gray-800 transition-all duration-200 px-3 py-2 rounded-lg ${location.pathname === '/' ? 'text-white font-bold bg-black border border-gray-800 shadow-sm' : 'text-gray-600'}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Home
                   </Link>
                   <Link 
                     to="/iot-components" 
-                    className={`py-2 hover:text-primary transition-colors px-3 py-2 rounded-lg ${location.pathname === '/iot-components' ? 'text-primary font-bold bg-primary/10 border border-primary/20' : ''}`}
+                    className={`py-2 hover:text-white hover:bg-gray-800 transition-all duration-200 px-3 py-2 rounded-lg ${location.pathname === '/iot-components' ? 'text-white font-bold bg-black border border-gray-800 shadow-sm' : 'text-gray-600'}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     IoT Components
                   </Link>
                   <Link 
                     to="/ready-made-projects" 
-                    className={`py-2 hover:text-primary transition-colors px-3 py-2 rounded-lg ${location.pathname === '/ready-made-projects' ? 'text-primary font-bold bg-primary/10 border border-primary/20' : ''}`}
+                    className={`py-2 hover:text-white hover:bg-gray-800 transition-all duration-200 px-3 py-2 rounded-lg ${location.pathname === '/ready-made-projects' ? 'text-white font-bold bg-black border border-gray-800 shadow-sm' : 'text-gray-600'}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Ready-Made Projects
                   </Link>
                   <Link 
                     to="/contact" 
-                    className={`py-2 hover:text-primary transition-colors px-3 py-2 rounded-lg ${location.pathname === '/contact' ? 'text-primary font-bold bg-primary/10 border border-primary/20' : ''}`}
+                    className={`py-2 hover:text-white hover:bg-gray-800 transition-all duration-200 px-3 py-2 rounded-lg ${location.pathname === '/contact' ? 'text-white font-bold bg-black border border-gray-800 shadow-sm' : 'text-gray-600'}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Contact
                   </Link>
                   <Link 
                     to="/connection-test" 
-                    className={`py-2 hover:text-primary transition-colors px-3 py-2 rounded-lg ${location.pathname === '/connection-test' ? 'text-primary font-bold bg-primary/10 border border-primary/20' : ''}`}
+                    className={`py-2 hover:text-white hover:bg-gray-800 transition-all duration-200 px-3 py-2 rounded-lg ${location.pathname === '/connection-test' ? 'text-white font-bold bg-black border border-gray-800 shadow-sm' : 'text-gray-600'}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Test Connections
